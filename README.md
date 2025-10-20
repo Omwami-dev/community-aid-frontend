@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Community Aid Tracker - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+**Community Aid Tracker** is a React-based frontend application designed to help NGOs and charitable foundations manage their projects, donations, beneficiaries, and volunteers. It serves as the user interface for interacting with the backend API (Community Aid Tracker API).
 
-In the project directory, you can run:
+This frontend project allows users to:
+- View projects
+- Track donations
+- Manage beneficiaries
+- Manage volunteers
+- Register and login to access certain features
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pages
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application consists of **7 main pages**:
 
-### `npm test`
+1. **HomePage** – Welcome section with links to key features.
+2. **ProjectsPage** – List and overview of ongoing and completed projects.
+3. **DonationsPage** – Track donations with donor names, amounts, and dates.
+4. **BeneficiariesPage** – List of beneficiaries and the support they receive.
+5. **VolunteersPage** – List of volunteers and their assigned projects.
+6. **LoginPage** – User login form.
+7. **RegisterPage** – User registration form.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Navigation bar for easy access to all pages
+- Forms for user login and registration
+- Placeholder data for projects, donations, beneficiaries, and volunteers
+- React-based routing between pages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
 
-### `npm run eject`
+- **React** (functional components, hooks)
+- **React Router DOM** for client-side routing
+- **JavaScript (ES6+)**
+- **CSS** for styling 
+- **npm** for package management
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+community-aid-frontend/
+│
+├─ src/
+│  ├─ pages/
+│  │  ├─ HomePage.js
+│  │  ├─ ProjectsPage.js
+│  │  ├─ DonationsPage.js
+│  │  ├─ BeneficiariesPage.js
+│  │  ├─ VolunteersPage.js
+│  │  ├─ LoginPage.js
+│  │  └─ RegisterPage.js
+│  ├─ App.js
+│  ├─ index.js
+│  └─ index.css
+│
+├─ package.json
+└─ README.md
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Installation
 
-## Learn More
+1. Clone the repository:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone https://github.com/Omwami-dev/community-aid-frontend.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
