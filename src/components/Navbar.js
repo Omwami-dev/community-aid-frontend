@@ -1,27 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // Update isMobile on window resize
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav style={navStyle}>
-      {/* Logo */}
       <div style={logoStyle}>Innocious Foundation</div>
 
-      {/* Hamburger button */}
-      <div style={hamburgerStyle} onClick={toggleMenu}>
-        <div style={barStyle}></div>
-        <div style={barStyle}></div>
-        <div style={barStyle}></div>
-      </div>
+      {isMobile && (
+        <div style={hamburgerStyle} onClick={toggleMenu}>
+          <div style={barStyle}></div>
+          <div style={barStyle}></div>
+          <div style={barStyle}></div>
+        </div>
+      )}
 
-      {/* Navigation Links */}
-      <ul style={{ ...navLinksStyle, display: isOpen ? "flex" : "none" }}>
+      <ul
+        style={{
+          ...navLinksStyle,
+          flexDirection: isMobile ? "column" : "row",
+          display: isMobile ? (isOpen ? "flex" : "none") : "flex",
+        }}
+      >
         <li><Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
         <li><Link className="nav-link" to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
         <li><Link className="nav-link" to="/donations" onClick={() => setIsOpen(false)}>Donations</Link></li>
@@ -34,7 +45,6 @@ const Navbar = () => {
   );
 };
 
-// Navbar container
 const navStyle = {
   display: "flex",
   justifyContent: "space-between",
@@ -47,21 +57,17 @@ const navStyle = {
   flexWrap: "wrap",
 };
 
-// Logo
 const logoStyle = {
   color: "#fff",
   fontWeight: "bold",
   fontSize: "20px",
 };
 
-// Hamburger container
 const hamburgerStyle = {
   display: "block",
   cursor: "pointer",
-  marginLeft: "auto",
 };
 
-// Hamburger bars
 const barStyle = {
   width: "25px",
   height: "3px",
@@ -69,20 +75,14 @@ const barStyle = {
   margin: "4px 0",
 };
 
-// Navigation links
 const navLinksStyle = {
   listStyle: "none",
-  display: "flex",
-  gap: "15px",
   margin: 0,
   padding: 0,
-  flexDirection: "column",
-  width: "100%",
-  backgroundColor: "#2b6cb0",
-  textAlign: "center",
+  gap: "15px",
 };
 
-// Link styles (use App.css for hover effect)
 export default Navbar;
+
 
 
