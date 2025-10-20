@@ -27,10 +27,11 @@ function LoginPage() {
   return (
     <div style={containerStyle}>
       <div style={formWrapperStyle}>
-        <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#2c3e50" }}>Login</h2>
+        <h2 style={headingStyle}>Login</h2>
         <form onSubmit={handleSubmit}>
+          {/** Email */}
           <div style={inputGroupStyle}>
-            <label style={labelStyle}>Email</label>
+            <label style={labelStyle}>Email:</label>
             <input
               type="email"
               name="email"
@@ -42,8 +43,9 @@ function LoginPage() {
             />
           </div>
 
+          {/** Password */}
           <div style={inputGroupStyle}>
-            <label style={labelStyle}>Password</label>
+            <label style={labelStyle}>Password:</label>
             <input
               type="password"
               name="password"
@@ -62,7 +64,7 @@ function LoginPage() {
   );
 }
 
-// Styles
+// Styles (matching Register Page for consistency)
 const containerStyle = {
   display: "flex",
   justifyContent: "center",
@@ -74,11 +76,17 @@ const containerStyle = {
 
 const formWrapperStyle = {
   backgroundColor: "#fff",
-  padding: "30px 40px",
+  padding: "30px 20px", // slightly smaller padding for mobile
   borderRadius: "10px",
   boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
   width: "100%",
   maxWidth: "400px",
+};
+
+const headingStyle = {
+  textAlign: "center",
+  marginBottom: "20px",
+  color: "#2c3e50",
 };
 
 const inputGroupStyle = {
@@ -112,5 +120,6 @@ const buttonStyle = {
 };
 
 export default LoginPage;
+
 
 
