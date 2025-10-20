@@ -37,10 +37,9 @@ function RegisterPage() {
   return (
     <div style={containerStyle}>
       <div style={formWrapperStyle}>
-        <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#2c3e50" }}>
-          Register
-        </h2>
+        <h2 style={headingStyle}>Register</h2>
         <form onSubmit={handleSubmit}>
+          {/** Username */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Username:</label>
             <input
@@ -54,6 +53,7 @@ function RegisterPage() {
             />
           </div>
 
+          {/** Email */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Email:</label>
             <input
@@ -67,6 +67,7 @@ function RegisterPage() {
             />
           </div>
 
+          {/** Password */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Password:</label>
             <input
@@ -80,6 +81,7 @@ function RegisterPage() {
             />
           </div>
 
+          {/** Confirm Password */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Confirm Password:</label>
             <input
@@ -100,7 +102,7 @@ function RegisterPage() {
   );
 }
 
-// Styles (matching Login Page)
+// Styles
 const containerStyle = {
   display: "flex",
   justifyContent: "center",
@@ -112,11 +114,17 @@ const containerStyle = {
 
 const formWrapperStyle = {
   backgroundColor: "#fff",
-  padding: "30px 40px",
+  padding: "30px 20px", // slightly smaller padding on mobile
   borderRadius: "10px",
   boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
   width: "100%",
   maxWidth: "400px",
+};
+
+const headingStyle = {
+  textAlign: "center",
+  marginBottom: "20px",
+  color: "#2c3e50",
 };
 
 const inputGroupStyle = {
@@ -150,4 +158,5 @@ const buttonStyle = {
 };
 
 export default RegisterPage;
+
 
