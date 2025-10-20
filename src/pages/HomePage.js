@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+    <div style={containerStyle}>
       {/* Hero Section */}
-      <section style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1>Welcome to Innocious Foundation</h1>
-        <p>
+      <section style={heroStyle}>
+        <h1 style={headingStyle}>Welcome to Innocious Foundation</h1>
+        <p style={paragraphStyle}>
           Striving to create a better world through humanitarian acts, empowering communities,
           and mobilizing resources from generous donors and dedicated volunteers.
         </p>
-        <div style={{ marginTop: '20px' }}>
+        <div style={buttonGroupStyle}>
           <Link to="/projects">
             <button style={buttonStyle}>View Projects</button>
           </Link>
@@ -57,10 +57,42 @@ const HomePage = () => {
   );
 };
 
-// Inline styles for simplicity
+// Styles for mobile-friendly layout
+const containerStyle = {
+  padding: '20px',
+  fontFamily: 'Arial, sans-serif',
+  maxWidth: '900px', // Limits content width for readability
+  margin: 'auto', // Centers content
+};
+
+const heroStyle = {
+  textAlign: 'center',
+  marginBottom: '40px',
+};
+
+const headingStyle = {
+  fontSize: '2rem',
+  marginBottom: '15px',
+  color: '#2c3e50',
+};
+
+const paragraphStyle = {
+  fontSize: '1rem',
+  color: '#555',
+  lineHeight: '1.6',
+  marginBottom: '20px',
+};
+
+const buttonGroupStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap', // Allows buttons to wrap on small screens
+  gap: '10px',
+  marginTop: '20px',
+};
+
 const buttonStyle = {
   padding: '10px 20px',
-  margin: '0 10px',
   fontSize: '16px',
   cursor: 'pointer',
   backgroundColor: '#2b6cb0',
@@ -78,3 +110,4 @@ const sectionStyle = {
 };
 
 export default HomePage;
+
