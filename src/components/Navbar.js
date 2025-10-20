@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav style={navStyle}>
+      {/* Logo */}
       <div style={logoStyle}>Innocious Foundation</div>
-      <ul style={navLinksStyle}>
-        <li><Link style={linkStyle} to="/">Home</Link></li>
-        <li><Link style={linkStyle} to="/projects">Projects</Link></li>
-        <li><Link style={linkStyle} to="/donations">Donations</Link></li>
-        <li><Link style={linkStyle} to="/beneficiaries">Beneficiaries</Link></li>
-        <li><Link style={linkStyle} to="/volunteers">Volunteers</Link></li>
-        <li><Link style={linkStyle} to="/login">Login</Link></li>
-        <li><Link style={linkStyle} to="/register">Register</Link></li>
+
+      {/* Hamburger button */}
+      <div style={hamburgerStyle} onClick={toggleMenu}>
+        <div style={barStyle}></div>
+        <div style={barStyle}></div>
+        <div style={barStyle}></div>
+      </div>
+
+      {/* Navigation Links */}
+      <ul style={{ ...navLinksStyle, display: isOpen ? "flex" : "none" }}>
+        <li><Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+        <li><Link className="nav-link" to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
+        <li><Link className="nav-link" to="/donations" onClick={() => setIsOpen(false)}>Donations</Link></li>
+        <li><Link className="nav-link" to="/beneficiaries" onClick={() => setIsOpen(false)}>Beneficiaries</Link></li>
+        <li><Link className="nav-link" to="/volunteers" onClick={() => setIsOpen(false)}>Volunteers</Link></li>
+        <li><Link className="nav-link" to="/login" onClick={() => setIsOpen(false)}>Login</Link></li>
+        <li><Link className="nav-link" to="/register" onClick={() => setIsOpen(false)}>Register</Link></li>
       </ul>
     </nav>
   );
@@ -25,10 +41,10 @@ const navStyle = {
   alignItems: "center",
   padding: "10px 20px",
   backgroundColor: "#2b6cb0",
-  position: "sticky", // Makes navbar stick on top
+  position: "sticky",
   top: 0,
   zIndex: 1000,
-  flexWrap: "wrap", // For mobile responsiveness
+  flexWrap: "wrap",
 };
 
 // Logo
@@ -38,32 +54,35 @@ const logoStyle = {
   fontSize: "20px",
 };
 
-// Navigation links container
+// Hamburger container
+const hamburgerStyle = {
+  display: "block",
+  cursor: "pointer",
+  marginLeft: "auto",
+};
+
+// Hamburger bars
+const barStyle = {
+  width: "25px",
+  height: "3px",
+  backgroundColor: "#fff",
+  margin: "4px 0",
+};
+
+// Navigation links
 const navLinksStyle = {
   listStyle: "none",
   display: "flex",
   gap: "15px",
   margin: 0,
   padding: 0,
-  flexWrap: "wrap", // Wrap links on small screens
+  flexDirection: "column",
+  width: "100%",
+  backgroundColor: "#2b6cb0",
+  textAlign: "center",
 };
 
-// Individual link style
-const linkStyle = {
-  color: "#fff",
-  textDecoration: "none",
-  fontWeight: "500",
-  padding: "5px 10px",
-  borderRadius: "5px",
-  transition: "background-color 0.3s",
-};
-
-// Hover effect using inline style trick
-Object.assign(linkStyle, {
-  ":hover": {
-    backgroundColor: "#1e4290",
-  },
-});
-
+// Link styles (use App.css for hover effect)
 export default Navbar;
+
 
