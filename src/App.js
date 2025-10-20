@@ -20,12 +20,15 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <div className="App" style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <div
+        className="App"
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      >
         {/* Navbar visible on all pages */}
         <Navbar />
 
-        {/* Main content grows to fill available space */}
-        <main style={{ flex: 1 }}>
+        {/* Main content grows to fill available space with top padding to avoid overlap */}
+        <main style={{ flex: 1, paddingTop: "80px" }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
@@ -45,5 +48,6 @@ function App() {
 }
 
 export default App;
+
 
 
