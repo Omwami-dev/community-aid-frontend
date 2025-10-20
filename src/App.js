@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
@@ -18,17 +18,42 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
+  const navbarRef = useRef(null);
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
+  useEffect(() => {
+    if (navbarRef.current) {
+      setNavbarHeight(navbarRef.current.offsetHeight);
+    }
+
+    const handleResize = () => {
+      if (navbarRef.current) {
+        setNavbarHeight(navbarRef.current.offsetHeight);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <Router>
       <div
         className="App"
-        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          backgroundColor: "#f4f4f4",
+        }}
       >
-        {/* Navbar visible on all pages */}
-        <Navbar />
+        {/* Navbar on all pages */}
+        <div ref={navbarRef}>
+          <Navbar />
+        </div>
 
-        {/* Main content grows to fill available space with top padding to avoid overlap */}
-        <main style={{ flex: 1, paddingTop: "80px" }}>
+        {/* Main content with dynamic top padding */}
+        <main style={{ flex: 1, paddingTop: navbarHeight }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
@@ -40,7 +65,7 @@ function App() {
           </Routes>
         </main>
 
-        {/* Footer appears on all pages */}
+        {/* Footer on all pages */}
         <Footer />
       </div>
     </Router>
@@ -48,6 +73,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

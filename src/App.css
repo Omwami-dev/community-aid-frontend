@@ -65,3 +65,12 @@ button:hover {
 label {
   font-weight: bold;
 }
+main {
+  padding-top: 70px; /* desktop */
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 90px; /* taller mobile navbar */
+  }
+}
