@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Pages
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import DonationsPage from "./pages/DonationsPage";
@@ -7,24 +9,21 @@ import BeneficiariesPage from "./pages/BeneficiariesPage";
 import VolunteersPage from "./pages/VolunteersPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+
+// Components
+import Navbar from "./components/Navbar";
+
+// Styles
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
-          <ul className="nav-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/donations">Donations</Link></li>
-            <li><Link to="/beneficiaries">Beneficiaries</Link></li>
-            <li><Link to="/volunteers">Volunteers</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
-        </nav>
+        {/* Navbar appears on all pages */}
+        <Navbar />
 
+        {/* Page routes */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
@@ -40,3 +39,4 @@ function App() {
 }
 
 export default App;
+
