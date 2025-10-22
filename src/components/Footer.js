@@ -7,11 +7,15 @@ const Footer = () => {
         <p>&copy; {new Date().getFullYear()} Innocious Foundation. All rights reserved.</p>
         <p>
           Follow us: 
-           {/* <a href="#" style={linkStyle}>Facebook</a> | */}
+         <a href="https://www.facebook.com/share/14NveVJEcHv/" target="_blank" rel="noopener noreferrer" style={linkStyle}>
+          Facebook
+         </a>{" "}|
            <a href="https://x.com/Innocious_Found?s=08" target="_blank" rel="noopener noreferrer" style={linkStyle}>
           Twitter
-        </a>{" "} |
-          {/* <a href="#" style={linkStyle}>Instagram</a> */}
+         </a>{" "}|
+          <a href="https://www.instagram.com/innocious_foundation?igsh=bDRlYTNxc2ZvNG0x" target="_blank" rel="noopener noreferrer" style={linkStyle}>
+          Instagram
+         </a>{" "}|
         </p>
       </div>
     </footer>
