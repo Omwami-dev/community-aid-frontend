@@ -1,26 +1,38 @@
-nav {
-  background-color: #2b6cb0;
-  padding: 15px;
+.navbar {
+  background: linear-gradient(
+    90deg,
+    var(--blue-primary),
+    var(--teal-primary)
+  );
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
+.logo-text {
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .nav-links li a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
-  font-weight: bold;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .nav-links li a:hover {
-  text-decoration: underline;
+  background-color: var(--accent-yellow);
+  color: var(--text-dark);
 }
+
+.nav-links li.active a {
+  background-color: var(--accent-purple);
+}
+
 
 .App {
   text-align: center;
