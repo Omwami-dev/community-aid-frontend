@@ -1,3 +1,14 @@
+* {
+  margin: 100;
+  padding: 100;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 :root {
   /* Primary brand colors */
   --blue-primary: #1f5fa9;
@@ -14,6 +25,36 @@
   --text-dark: #1f2933;
   --white: #ffffff;
 }
+.hero-section {
+  min-height: 50vh;          /* full screen height */
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem;
+}
+
+/* Optional styling for text */
+.hero-heading {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero-paragraph {
+  max-width: 700px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Button layout */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 
 body {
    margin: 0;
@@ -21,8 +62,63 @@ body {
   background-color: var(--bg-light);
   color: var(--text-dark);
 }
-
+.btn-primary {
+  background-color: var(--teal-primary);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background-color: var(--blue-primary);
+}
+.btn-accent {
+  background-color: var(--teal-primary);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.card {
+  background-color: var(--white);
+  border-left: 6px solid var(--teal-primary);
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  color: var(--blue-primary);
+}
+.section-yellow {
+  background-color: var(--accent-yellow);
+  padding: 2rem;
+  width: 100vw;              /* full browser width */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%)
+
+}
+.section-tealprimary {
+  background-color: var(--teal-primary);
+  padding: 2rem;
+  width: 100vw;              /* full browser width */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%)
+
+}
+.section-purple {
+  background-color: var(--accent-purple);
+  color: white;
+  padding: 2rem;
+  width: 100vw;              /* full browser width */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%)
 }

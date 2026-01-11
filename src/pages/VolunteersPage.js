@@ -10,8 +10,10 @@ function VolunteersPage() {
       <p style={paragraphStyle}>
         Our dedicated volunteers are the backbone of <strong>Innocious Foundation</strong>.
         They help make our projects successful and transform communities.
-      </p>
-
+       </p>
+       <div>
+       <h1>Become a Volunteer</h1>
+        </div>
       {volunteers.length === 0 ? (
         <p style={emptyStyle}>
           No volunteers have been registered yet. As volunteers join, their profiles will appear here.

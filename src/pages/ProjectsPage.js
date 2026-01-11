@@ -24,13 +24,14 @@ function ProjectsPage() {
 
   return (
     <div style={containerStyle}>
-      <h1 style={headingStyle}>Our Projects</h1>
-      <p style={paragraphStyle}>
+       <section>
+        <h1 style={headingStyle}>Our Projects</h1>
+        <p style={paragraphStyle}>
         At <strong>Innocious Foundation</strong>, we are driven by compassion and purpose.
         Each project we launch is a step toward uplifting lives and promoting equality through education,
         sustainable development, and community empowerment.
-      </p>
-
+       </p>
+       </section> 
       <div style={gridStyle}>
         {projects.map((project) => (
           <div key={project.id} style={cardStyle}>

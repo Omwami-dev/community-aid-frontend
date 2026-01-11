@@ -5,24 +5,29 @@ const HomePage = () => {
   return (
     <div style={containerStyle}>
       {/* Hero Section */}
-      <section style={heroStyle}>
-        <h1 style={headingStyle}>Welcome to Innocious Foundation</h1>
-        <p style={paragraphStyle}>
-          Striving to create a better world through humanitarian acts, empowering communities,
-          and mobilizing resources from generous donors and dedicated volunteers.
-        </p>
-        <div style={buttonGroupStyle}>
-          <Link to="/projects">
-            <button style={buttonStyle}>View Projects</button>
-          </Link>
-          <Link to="/donations">
-            <button style={buttonStyle}>Make a Donation</button>
-          </Link>
-        </div>
-      </section>
+ {/* Hero Section */}
+  <section className="hero-section">
+    <h1 className="hero-heading">Welcome to Innocious Foundation</h1>
+    <p className="hero-paragraph">
+    Striving to create a better world through humanitarian acts, empowering communities,
+    and mobilizing resources from generous donors and dedicated volunteers.
+    </p>
+    <div className="hero-buttons">
+     <Link to="/projects">
+      <button className="btn-primary">View Projects</button>
+     </Link>
+     <Link to="/donations" className="btn-primary">
+      Make a Donation
+     </Link>
+     <Link to="/volunteers" className="btn-accent">
+      Volunteer
+     </Link>
+   </div>
+   </section>
+
 
       {/* About Section */}
-      <section style={sectionStyle}>
+      <section className='section-tealprimary'>
         <h2>About Innocious Foundation</h2>
         <p>
           Innocious Foundation is a humanitarian organization dedicated to uplifting communities,
@@ -35,7 +40,7 @@ const HomePage = () => {
       </section>
 
       {/* Mission Section */}
-      <section style={sectionStyle}>
+      <section className='section-yellow'>
         <h2>Our Mission</h2>
         <p>
           To empower communities by mobilizing volunteers and sourcing resources from donors,
@@ -45,7 +50,7 @@ const HomePage = () => {
       </section>
 
       {/* Vision Section */}
-      <section style={sectionStyle}>
+      <section className="section-purple">
         <h2>Our Vision</h2>
         <p>
           A world where every individual and community thrives with access to essential resources,
@@ -63,50 +68,6 @@ const containerStyle = {
   fontFamily: 'Arial, sans-serif',
   maxWidth: '900px', // Limits content width for readability
   margin: 'auto', // Centers content
-};
-
-const heroStyle = {
-  textAlign: 'center',
-  marginBottom: '40px',
-};
-
-const headingStyle = {
-  fontSize: '2rem',
-  marginBottom: '15px',
-  color: '#2c3e50',
-};
-
-const paragraphStyle = {
-  fontSize: '1rem',
-  color: '#555',
-  lineHeight: '1.6',
-  marginBottom: '20px',
-};
-
-const buttonGroupStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  flexWrap: 'wrap', // Allows buttons to wrap on small screens
-  gap: '10px',
-  marginTop: '20px',
-};
-
-const buttonStyle = {
-  padding: '10px 20px',
-  fontSize: '16px',
-  cursor: 'pointer',
-  backgroundColor: '#2b6cb0',
-  color: 'white',
-  border: 'none',
-  borderRadius: '5px',
-};
-
-const sectionStyle = {
-  marginBottom: '30px',
-  padding: '20px',
-  backgroundColor: '#f7fafc',
-  borderRadius: '8px',
-  textAlign: 'center',
 };
 
 export default HomePage;

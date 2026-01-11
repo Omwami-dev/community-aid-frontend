@@ -11,6 +11,10 @@ function DonationsPage() {
   return (
     <div style={containerStyle}>
       <h1 style={headingStyle}>Donations</h1>
+      <div className="card">
+     <h3>Support a Cause</h3>
+     <p>Your donation helps transform lives.</p>
+     </div>
       <p style={paragraphStyle}>
         Your contributions to <strong>Innocious Foundation</strong> help us build a
         fairer, more compassionate world.
