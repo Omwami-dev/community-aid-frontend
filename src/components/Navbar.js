@@ -28,7 +28,7 @@ const Navbar = () => {
             alt="Innocious Foundation Logo"
             style={{
               ...logoStyle,
-              width: windowWidth > 768 ? "102px" : "100px", // bigger on desktop
+              width: windowWidth > 768 ? "75px" : "60px", // bigger on desktop
             }}
           />
         </Link>

@@ -61,6 +61,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-light);
   color: var(--text-dark);
+ 
 }
 .btn-primary {
   background-color: var(--teal-primary);
@@ -112,7 +113,6 @@ code {
   width: 100vw;              /* full browser width */
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%)
-
 }
 .section-purple {
   background-color: var(--accent-purple);
