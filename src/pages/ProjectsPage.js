@@ -21,10 +21,8 @@ function ProjectsPage() {
       id: 3,
       title: "Empowering Local Entrepreneurs",
       description:
-        "Encouraging self-reliance through small grants, skill training, and access to mentorship programs for youth and women entrepreneurs.",
+        "Encouraging self-reliance through skill training, and access to mentorship programs for youth and women entrepreneurs.",
     },
-
-    // 🔽 NEW PROJECTS (Aligned with Innocious Foundation)
     {
       id: 4,
       title: "Digital Skills for Youth",
@@ -33,24 +31,18 @@ function ProjectsPage() {
     },
     {
       id: 5,
-      title: "School Infrastructure Support",
+      title: "Women Empowerment Initiative",
       description:
-        "Improving learning environments by supporting classroom renovations, desks, sanitation facilities, and access to clean water in public schools.",
+        "Supporting women through financial literacy, and access to small startup capital to promote economic independence.",
     },
     {
       id: 6,
-      title: "Women Empowerment Initiative",
-      description:
-        "Supporting women through vocational training, financial literacy, and access to small startup capital to promote economic independence.",
-    },
-    {
-      id: 7,
       title: "Environmental Conservation Program",
       description:
         "Promoting environmental sustainability through tree planting, waste management education, and climate awareness campaigns within local communities.",
     },
     {
-      id: 8,
+      id: 7,
       title: "Community Health Outreach",
       description:
         "Providing basic medical camps, health education, and preventive care awareness to underserved rural communities.",
