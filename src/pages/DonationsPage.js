@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function DonationsPage() {
-  // Placeholder donations array (empty for now)
-  const donations = []; // no real donations yet
+  const [donations, setDonations] = useState([]);
 
-  // Calculate total amount (will be 0 if empty)
+  // Example placeholder fetch (use when backend is ready)
+  useEffect(() => {
+    // Example: fetch donations later
+    // fetch("/api/donations")
+    //   .then(res => res.json())
+    //   .then(data => setDonations(data));
+  }, []);
+
+  // Calculate total donations across all projects
   const totalAmount = donations.reduce((sum, d) => sum + d.amount, 0);
 
   return (
     <div style={containerStyle}>
       <h1 style={headingStyle}>Donations</h1>
-      <div className="card">
-     <h3>Support a Cause</h3>
-     <p>Your donation helps transform lives.</p>
-     </div>
+
+      <div style={cardStyle}>
+        <h3>Support a Cause</h3>
+        <p>Your donation helps transform lives.</p>
+      </div>
+
       <p style={paragraphStyle}>
         Your contributions to <strong>Innocious Foundation</strong> help us build a
         fairer, more compassionate world.
@@ -34,6 +43,7 @@ function DonationsPage() {
             <thead style={theadStyle}>
               <tr>
                 <th style={thStyle}>Donor</th>
+                <th style={thStyle}>Project</th>
                 <th style={thStyle}>Amount (KES)</th>
                 <th style={thStyle}>Date</th>
               </tr>
@@ -42,6 +52,7 @@ function DonationsPage() {
               {donations.map((donation, index) => (
                 <tr key={index} style={trStyle}>
                   <td style={tdStyle}>{donation.donor}</td>
+                  <td style={tdStyle}>{donation.projectTitle}</td>
                   <td style={tdStyle}>{donation.amount.toLocaleString()}</td>
                   <td style={tdStyle}>{donation.date}</td>
                 </tr>
@@ -60,7 +71,9 @@ function DonationsPage() {
   );
 }
 
-// Styles
+/* =========================
+   Styles
+========================= */
 const containerStyle = {
   padding: "20px",
   maxWidth: "900px",
@@ -81,6 +94,15 @@ const paragraphStyle = {
   lineHeight: "1.6",
 };
 
+const cardStyle = {
+  border: "1px solid #ddd",
+  borderRadius: "10px",
+  padding: "15px",
+  backgroundColor: "#f9f9f9",
+  marginBottom: "20px",
+  textAlign: "center",
+};
+
 const totalStyle = {
   textAlign: "center",
   color: "#27ae60",
@@ -94,7 +116,7 @@ const emptyStyle = {
 };
 
 const tableWrapperStyle = {
-  overflowX: "auto", // allows horizontal scroll on mobile
+  overflowX: "auto",
 };
 
 const tableStyle = {
@@ -103,7 +125,7 @@ const tableStyle = {
   backgroundColor: "#f9f9f9",
   borderRadius: "10px",
   overflow: "hidden",
-  minWidth: "300px", // ensures table fits on small screens
+  minWidth: "300px",
 };
 
 const theadStyle = {
@@ -140,5 +162,7 @@ const buttonStyle = {
 };
 
 export default DonationsPage;
+
+
 
 
