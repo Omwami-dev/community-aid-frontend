@@ -33,7 +33,6 @@
   background-color: var(--accent-purple);
 }
 
-
 .App {
   text-align: center;
   background-color: #f4f4f4;
@@ -84,5 +83,5 @@ main {
 @media (max-width: 768px) {
   main {
     padding-top: 90px; /* taller mobile navbar */
-  }
+}
 }

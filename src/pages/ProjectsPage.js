@@ -1,53 +1,23 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ProjectsPage() {
   const navigate = useNavigate();
 
-  const projects = [
-    {
-      id: 1,
-      title: "Community Education Drive",
-      description:
-        "This initiative provides learning materials, mentorship, and digital literacy programs to children and youth in underprivileged communities.",
-    },
-    {
-      id: 2,
-      title: "Health & Nutrition Program",
-      description:
-        "Promoting health awareness, nutrition, and hygiene education to improve the well-being of vulnerable families and school children.",
-    },
-    {
-      id: 3,
-      title: "Empowering Local Entrepreneurs",
-      description:
-        "Encouraging self-reliance through skill training, and access to mentorship programs for youth and women entrepreneurs.",
-    },
-    {
-      id: 4,
-      title: "Digital Skills for Youth",
-      description:
-        "Equipping young people with practical digital and technology skills such as computer literacy, coding basics, and online safety to prepare them for the modern job market.",
-    },
-    {
-      id: 5,
-      title: "Women Empowerment Initiative",
-      description:
-        "Supporting women through financial literacy, and access to small startup capital to promote economic independence.",
-    },
-    {
-      id: 6,
-      title: "Environmental Conservation Program",
-      description:
-        "Promoting environmental sustainability through tree planting, waste management education, and climate awareness campaigns within local communities.",
-    },
-    {
-      id: 7,
-      title: "Community Health Outreach",
-      description:
-        "Providing basic medical camps, health education, and preventive care awareness to underserved rural communities.",
-    },
-  ];
+ const [projects, setProjects] = useState([]);
+
+ useEffect(() => {
+  axios.get("http://127.0.0.1:8000/api/projects/")
+    .then((response) => {
+      setProjects(response.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching projects:", error);
+    });
+}, []);
+
+
 
   return (
     <div style={containerStyle}>

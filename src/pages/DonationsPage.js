@@ -4,16 +4,23 @@ import { Link } from "react-router-dom";
 function DonationsPage() {
   const [donations, setDonations] = useState([]);
 
-  // Example placeholder fetch (use when backend is ready)
   useEffect(() => {
-    // Example: fetch donations later
-    // fetch("/api/donations")
-    //   .then(res => res.json())
-    //   .then(data => setDonations(data));
+    fetch("http://127.0.0.1:8000/api/donations/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.results) {
+          setDonations(data.results);
+        } else {
+          setDonations(data);
+        }
+      })
+      .catch((err) => console.error(err));
   }, []);
 
-  // Calculate total donations across all projects
-  const totalAmount = donations.reduce((sum, d) => sum + d.amount, 0);
+  // Convert string amount to number safely
+  const totalAmount = Array.isArray(donations)
+    ? donations.reduce((sum, d) => sum + Number(d.amount), 0)
+    : 0;
 
   return (
     <div style={containerStyle}>
@@ -33,7 +40,7 @@ function DonationsPage() {
         Total Donations: KES {totalAmount.toLocaleString()}
       </h3>
 
-      {donations.length === 0 ? (
+      {Array.isArray(donations) && donations.length === 0 ? (
         <p style={emptyStyle}>
           No donations yet. Be the first to contribute!
         </p>
@@ -49,14 +56,19 @@ function DonationsPage() {
               </tr>
             </thead>
             <tbody>
-              {donations.map((donation, index) => (
-                <tr key={index} style={trStyle}>
-                  <td style={tdStyle}>{donation.donor}</td>
-                  <td style={tdStyle}>{donation.projectTitle}</td>
-                  <td style={tdStyle}>{donation.amount.toLocaleString()}</td>
-                  <td style={tdStyle}>{donation.date}</td>
-                </tr>
-              ))}
+              {Array.isArray(donations) &&
+                donations.map((donation, index) => (
+                  <tr key={index} style={trStyle}>
+                    <td style={tdStyle}>{donation.donor}</td>
+                    <td style={tdStyle}>{donation.project}</td>
+                    <td style={tdStyle}>
+                      {Number(donation.amount).toLocaleString()}
+                    </td>
+                    <td style={tdStyle}>
+                      {new Date(donation.date).toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
@@ -162,6 +174,8 @@ const buttonStyle = {
 };
 
 export default DonationsPage;
+
+
 
 
 

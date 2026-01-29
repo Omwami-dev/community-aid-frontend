@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function BeneficiariesPage() {
-  // No actual beneficiaries yet
-  const beneficiaries = []; // empty for now
+  const [beneficiaries, setBeneficiaries] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/beneficiaries/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.results) {
+          setBeneficiaries(data.results);
+        } else {
+          setBeneficiaries(data);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div style={containerStyle}>
@@ -13,20 +25,28 @@ function BeneficiariesPage() {
         and foster sustainable development.
       </p>
 
-      {beneficiaries.length === 0 ? (
+      {Array.isArray(beneficiaries) && beneficiaries.length === 0 ? (
         <p style={emptyStyle}>
           No beneficiaries have been recorded yet. As soon as contributions are made,
           they will appear here.
         </p>
       ) : (
         <div style={gridStyle}>
-          {beneficiaries.map((b) => (
-            <div key={b.id} style={cardStyle}>
-              <h2 style={cardTitleStyle}>{b.name}</h2>
-              <p style={cardTextStyle}><strong>Project:</strong> {b.project}</p>
-              <p style={cardTextStyle}><strong>Amount Received:</strong> KES {b.amountReceived.toLocaleString()}</p>
-            </div>
-          ))}
+          {Array.isArray(beneficiaries) &&
+            beneficiaries.map((b) => (
+              <div key={b.id} style={cardStyle}>
+                <h2 style={cardTitleStyle}>{b.name}</h2>
+                <p style={cardTextStyle}>
+                  <strong>Contact:</strong> {b.contact_info}
+                </p>
+                <p style={cardTextStyle}>
+                  <strong>Approved:</strong> {b.approved ? "Yes" : "No"}
+                </p>
+                <p style={cardTextStyle}>
+                  <strong>Project ID:</strong> {b.project}
+                </p>
+              </div>
+            ))}
         </div>
       )}
     </div>
@@ -88,5 +108,7 @@ const cardTextStyle = {
 };
 
 export default BeneficiariesPage;
+
+
 
 

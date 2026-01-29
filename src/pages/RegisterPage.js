@@ -15,7 +15,7 @@ function RegisterPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -23,15 +23,34 @@ function RegisterPage() {
       return;
     }
 
-    console.log("User Registered:", formData);
-    alert("Registration successful! (Demo)");
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/register/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
 
-    setFormData({
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+      if (response.ok) {
+        alert("Registration successful!");
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+      } else {
+        const errorData = await response.json();
+        alert("Registration failed: " + JSON.stringify(errorData));
+      }
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
   };
 
   return (
@@ -39,7 +58,7 @@ function RegisterPage() {
       <div style={formWrapperStyle}>
         <h2 style={headingStyle}>Register</h2>
         <form onSubmit={handleSubmit}>
-          {/** Username */}
+          {/* Username */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Username:</label>
             <input
@@ -53,7 +72,7 @@ function RegisterPage() {
             />
           </div>
 
-          {/** Email */}
+          {/* Email */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Email:</label>
             <input
@@ -67,7 +86,7 @@ function RegisterPage() {
             />
           </div>
 
-          {/** Password */}
+          {/* Password */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Password:</label>
             <input
@@ -81,7 +100,7 @@ function RegisterPage() {
             />
           </div>
 
-          {/** Confirm Password */}
+          {/* Confirm Password */}
           <div style={inputGroupStyle}>
             <label style={labelStyle}>Confirm Password:</label>
             <input
@@ -114,7 +133,7 @@ const containerStyle = {
 
 const formWrapperStyle = {
   backgroundColor: "#fff",
-  padding: "30px 20px", // slightly smaller padding on mobile
+  padding: "30px 20px",
   borderRadius: "10px",
   boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
   width: "100%",
@@ -158,5 +177,7 @@ const buttonStyle = {
 };
 
 export default RegisterPage;
+
+
 
 

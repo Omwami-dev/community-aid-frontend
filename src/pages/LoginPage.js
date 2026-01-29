@@ -6,6 +6,8 @@ function LoginPage() {
     password: "",
   });
 
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -13,21 +15,50 @@ function LoginPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login Attempt:", formData);
-    alert(`Login attempt for: ${formData.email} (Demo)`);
 
-    setFormData({
-      email: "",
-      password: "",
-    });
+    const url = "http://127.0.0.1:8000/api/token/";
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      console.log(data); // <-- shows exact backend error
+
+      if (response.ok) {
+        // Save tokens
+        localStorage.setItem("access_token", data.access);
+        localStorage.setItem("refresh_token", data.refresh);
+
+        alert("Login successful!");
+        setError(null);
+      } else {
+        setError("Login failed. Please check your credentials.");
+      }
+    } catch (err) {
+      setError("Network error. Please check backend server.");
+      console.error(err);
+    }
   };
 
   return (
     <div style={containerStyle}>
       <div style={formWrapperStyle}>
         <h2 style={headingStyle}>Login</h2>
+
+        {error && <p style={errorStyle}>{error}</p>}
+
         <form onSubmit={handleSubmit}>
           {/** Email */}
           <div style={inputGroupStyle}>
@@ -57,14 +88,16 @@ function LoginPage() {
             />
           </div>
 
-          <button type="submit" style={buttonStyle}>Login</button>
+          <button type="submit" style={buttonStyle}>
+            Login
+          </button>
         </form>
       </div>
     </div>
   );
 }
 
-// Styles (matching Register Page for consistency)
+// Styles
 const containerStyle = {
   display: "flex",
   justifyContent: "center",
@@ -76,7 +109,7 @@ const containerStyle = {
 
 const formWrapperStyle = {
   backgroundColor: "#fff",
-  padding: "30px 20px", // slightly smaller padding for mobile
+  padding: "30px 20px",
   borderRadius: "10px",
   boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
   width: "100%",
@@ -119,7 +152,19 @@ const buttonStyle = {
   cursor: "pointer",
 };
 
+const errorStyle = {
+  color: "red",
+  textAlign: "center",
+  marginBottom: "10px",
+};
+
 export default LoginPage;
+
+
+
+
+
+
 
 
 

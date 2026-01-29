@@ -1,30 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function VolunteersPage() {
-  // Placeholder volunteers data (empty for now)
-  const volunteers = []; // no actual volunteers yet
+  const [volunteers, setVolunteers] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/volunteers/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.results) {
+          setVolunteers(data.results);
+        } else {
+          setVolunteers(data);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div style={containerStyle}>
       <h1 style={headingStyle}>Volunteers</h1>
+
       <p style={paragraphStyle}>
-        Our dedicated volunteers are the backbone of <strong>Innocious Foundation</strong>.
-        They help make our projects successful and transform communities.
-       </p>
-       <div>
-       <h1>Become a Volunteer</h1>
-        </div>
+        Our dedicated volunteers are the backbone of{" "}
+        <strong>Innocious Foundation</strong>. They help make our projects
+        successful and transform communities.
+      </p>
+
+      <div style={formHeaderStyle}>
+        <h2>Become a Volunteer</h2>
+        <p style={formSubtextStyle}>
+          Join us in making a difference. Fill in your details and we will reach
+          out.
+        </p>
+      </div>
+
       {volunteers.length === 0 ? (
         <p style={emptyStyle}>
-          No volunteers have been registered yet. As volunteers join, their profiles will appear here.
+          No volunteers have been registered yet. As volunteers join, their
+          profiles will appear here.
         </p>
       ) : (
         <div style={gridStyle}>
           {volunteers.map((v) => (
             <div key={v.id} style={cardStyle}>
               <h2 style={cardTitleStyle}>{v.name}</h2>
-              <p style={cardTextStyle}><strong>Assigned Project:</strong> {v.project}</p>
-              <p style={cardTextStyle}><strong>Contact Info:</strong> {v.contact}</p>
+              <p style={cardTextStyle}>
+                <strong>Assigned Project:</strong> {v.project}
+              </p>
+              <p style={cardTextStyle}>
+                <strong>Contact Info:</strong> {v.contact_info}
+              </p>
+              <p style={cardTextStyle}>
+                <strong>Approved:</strong> {v.approved ? "Yes" : "No"}
+              </p>
             </div>
           ))}
         </div>
@@ -52,6 +80,16 @@ const paragraphStyle = {
   color: "#555",
   marginBottom: "30px",
   lineHeight: "1.6",
+};
+
+const formHeaderStyle = {
+  textAlign: "center",
+  marginBottom: "25px",
+};
+
+const formSubtextStyle = {
+  color: "#777",
+  marginTop: "10px",
 };
 
 const emptyStyle = {
@@ -88,5 +126,6 @@ const cardTextStyle = {
 };
 
 export default VolunteersPage;
+
 
 
