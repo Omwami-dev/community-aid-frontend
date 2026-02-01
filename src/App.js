@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import DonationsPage from "./pages/DonationsPage";
 import BeneficiariesPage from "./pages/BeneficiariesPage";
+import VolunteerApplicationPage from "./pages/VolunteerApplicationPage";
 import VolunteersPage from "./pages/VolunteersPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -85,6 +86,7 @@ function App() {
             <Route path="/donations" element={<DonationsPage />} />
             <Route path="/beneficiaries" element={<BeneficiariesPage />} />
             <Route path="/volunteers" element={<VolunteersPage />} />
+            <Route path="/apply-volunteer" element={<VolunteerApplicationPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>
